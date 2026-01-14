@@ -12,5 +12,18 @@ services:
     volumes:
       - devmatch_postgres_data:/var/lib/postgresql/data
 
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USERNAME: user
+      DB_PASSWORD: password
+      DB_DATABASE: devmatch
+    depends_on:
+      - db
+
 volumes:
   devmatch_postgres_data:

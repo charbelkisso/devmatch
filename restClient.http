@@ -1,42 +1,42 @@
-# get all profiles
-GET http://localhost:3000/profiles
+# SMOKE TEST FLOW
 
-###
-
-# get one profile
-GET http://localhost:3000/profiles/4585b2ce-80d5-46c5-96d9-009d5fcf775a
-
-###
-
-# create a profile
+# 1. Create a profile
+# @name createProfile
 POST http://localhost:3000/profiles
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "description": "I am a software engineer"
+  "name": "Smoke Test User",
+  "description": "Verification of CRUD flow"
 }
 
 ###
 
-# find created profile
+# Variable to store ID from previous request
+@profileId = {{createProfile.response.body.id}}
 
-GET http://localhost:3000/profiles/dbadfb92-c70b-47ba-bdb7-a2fbd6ef3150
+# 2. Get the created profile by ID (uses the ID from step 1)
+GET http://localhost:3000/profiles/{{profileId}}
 
 ###
 
-# update a profie 
-
-PUT http://localhost:3000/profiles/ac66a2bd-a7cb-4a53-afdd-a25efbb14964
-Content-Type:  application/json
+# 3. Update the profile (uses the ID from step 1)
+PUT http://localhost:3000/profiles/{{profileId}}
+Content-Type: application/json
 
 {
-    "name" : "charbel Kisso",
-    "description" : "idiot who start learn NestJs"
+    "name" : "Updated Smoke User",
+    "description" : "Updating details during smoke test"
 }
 
 ###
 
-# delete profile 
+# 4. Delete the profile (uses the ID from step 1)
+DELETE http://localhost:3000/profiles/{{profileId}}
 
-DELETE http://localhost:3000/profiles/1
+###
+
+# UTILS
+
+# Get all profiles
+GET http://localhost:3000/profiles
