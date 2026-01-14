@@ -1,0 +1,42 @@
+# get all profiles
+GET http://localhost:3000/profiles
+
+###
+
+# get one profile
+GET http://localhost:3000/profiles/4585b2ce-80d5-46c5-96d9-009d5fcf775a
+
+###
+
+# create a profile
+POST http://localhost:3000/profiles
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "description": "I am a software engineer"
+}
+
+###
+
+# find created profile
+
+GET http://localhost:3000/profiles/dbadfb92-c70b-47ba-bdb7-a2fbd6ef3150
+
+###
+
+# update a profie 
+
+PUT http://localhost:3000/profiles/ac66a2bd-a7cb-4a53-afdd-a25efbb14964
+Content-Type:  application/json
+
+{
+    "name" : "charbel Kisso",
+    "description" : "idiot who start learn NestJs"
+}
+
+###
+
+# delete profile 
+
+DELETE http://localhost:3000/profiles/1
