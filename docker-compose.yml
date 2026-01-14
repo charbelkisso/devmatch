@@ -13,7 +13,7 @@ services:
       - devmatch_postgres_data:/var/lib/postgresql/data
 
   app:
-    build: .
+    image: charbelkisso/devmatch-nesjtjs:1.0
     ports:
       - '3000:3000'
     environment:
